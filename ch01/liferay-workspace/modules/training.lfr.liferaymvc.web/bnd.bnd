@@ -1,0 +1,4 @@
+Bundle-Name: training.lfr.liferaymvc.web
+Bundle-SymbolicName: training.lfr.liferaymvc.web
+Bundle-Version: 1.0.0
+Export-Package: training.lfr.liferaymvc.web.constants

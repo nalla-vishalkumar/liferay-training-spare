@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="training.book.sb.model.Training">
+		<field name="uuid" type="String" />
+		<field name="trainingId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="trainingName" type="String" />
+		<field name="trainingDescription" type="String" />
+		<field name="tutorId" type="long" />
+	</model>
+	<model name="training.book.sb.model.Tutor">
+		<field name="uuid" type="String" />
+		<field name="tutorId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="tutorName" type="String" />
+		<field name="tutorEmail" type="String" />
+		<field name="trainingId" type="long" />
+	</model>
+</model-hints>

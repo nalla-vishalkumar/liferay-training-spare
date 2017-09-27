@@ -1,0 +1,9 @@
+Bundle-Name: training-book-sb-api
+Bundle-SymbolicName: training.book.sb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	training.book.sb.exception,\
+	training.book.sb.model,\
+	training.book.sb.service,\
+	training.book.sb.service.persistence
+-includeresource: META-INF/service.xml=../training-book-sb-service/service.xml

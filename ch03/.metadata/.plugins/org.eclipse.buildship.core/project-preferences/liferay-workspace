@@ -1,0 +1,9 @@
+#
+#Sun Oct 01 20:45:21 IST 2017
+linkedResources=
+managedNatures=
+classpath=<?xml version\="1.0" encoding\="UTF-8"?>\n<classpath>\n</classpath>\n
+subprojectPaths=modules;modules/jackson-core-2.9.1;modules/training-book;modules/training-book-sb;modules/training.lfr.liferaymvc.web;modules/training-book-sb/training-book-sb-api;modules/training-book-sb/training-book-sb-service
+derivedResources=.gradle;build;modules/build;modules/jackson-core-2.9.1/build;modules/training-book/build;modules/training-book-sb/build;modules/training.lfr.liferaymvc.web/build;modules/training-book-sb/training-book-sb-api/build;modules/training-book-sb/training-book-sb-service/build
+managedBuilders=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><commands/>
+buildDir=build

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Language.properties&apos; to &apos;training.lfr.liferaymvc.web/src/main/resources/content&apos;&#x0D;&#x0A;- Original project: &apos;training.lfr.liferaymvc.web&apos;&#x0D;&#x0A;- Destination element: &apos;training.lfr.liferaymvc.web/src/main/resources/content&apos;&#x0D;&#x0A;- Original element: &apos;Language.properties&apos;" description="Copy file" destination="/src\/main\/resources&lt;content" element1="src/main/resources/content/Language.properties" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1503240232764" units="0" version="1.0"/>
+</session>

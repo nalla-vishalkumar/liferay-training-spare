@@ -1,0 +1,9 @@
+#
+#Sun Oct 01 20:45:21 IST 2017
+linkedResources=
+managedNatures=
+classpath=<?xml version\="1.0" encoding\="UTF-8"?>\n<classpath>\n</classpath>\n
+subprojectPaths=training-book-sb-api;training-book-sb-service
+derivedResources=.gradle;build;training-book-sb-api/build;training-book-sb-service/build
+managedBuilders=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><commands/>
+buildDir=build

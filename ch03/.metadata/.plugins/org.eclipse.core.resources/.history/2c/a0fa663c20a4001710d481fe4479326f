@@ -1,0 +1,21 @@
+package jackson.core;
+
+import com.liferay.admin.kernel.util.Omniadmin;
+
+import org.osgi.service.component.annotations.Component;
+
+/**
+ * @author vishalkumar.n
+ */
+@Component(
+	immediate = true,
+	property = {
+		// TODO enter required service properties
+	},
+	service = Omniadmin.class
+)
+public class JacksonCore implements Omniadmin {
+
+	// TODO enter required service methods
+
+}

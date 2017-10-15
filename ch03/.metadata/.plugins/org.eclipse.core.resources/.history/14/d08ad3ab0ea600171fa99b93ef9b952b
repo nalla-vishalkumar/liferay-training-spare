@@ -1,0 +1,46 @@
+<%@include file="../init.jsp" %>
+
+<% 
+
+long tutorId = ParamUtil.getLong(renderRequest, "tutorId");
+
+Tutor tutor = null;
+if (tutorId > 0) {
+  tutor = TutorLocalServiceUtil.getTutor(tutorId);
+}
+
+long trainingId = ParamUtil.getLong(renderRequest, "trainingId");
+System.out.println("trainingId - " + trainingId);
+
+System.out.println("tutorId - " + tutorId);
+
+%>
+
+<portlet:renderURL var="viewURL">
+
+<portlet:param name="mvcPath" value="/training-book/view.jsp"></portlet:param>
+
+</portlet:renderURL>
+
+<portlet:actionURL name="addTutor" var="addTutorURL"></portlet:actionURL>
+
+<aui:form action="<%= addTutorURL %>" name="<portlet:namespace />fm">
+
+<aui:model-context bean="<%= tutor %>" model="<%= Tutor.class %>" />
+
+    <aui:fieldset>
+
+        <aui:input name="tutorName" />
+        <aui:input name="tutorEmail" />
+        <aui:input name="tutorId" type="hidden" />
+        <aui:input name="trainingId" type="hidden" value='<%= tutor == null ? trainingId : tutor.getTrainingId() %>'/>
+
+    </aui:fieldset>
+
+    <aui:button-row>
+
+        <aui:button type="submit"></aui:button>
+        <aui:button type="cancel" onClick="<%= viewURL.toString() %>"></aui:button>
+
+    </aui:button-row>
+</aui:form>

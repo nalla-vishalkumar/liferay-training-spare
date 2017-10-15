@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="training.book.sb.service.impl.TrainingLocalServiceImpl" id="training.book.sb.service.TrainingLocalService" />
+	<bean class="training.book.sb.service.impl.TrainingServiceImpl" id="training.book.sb.service.TrainingService" />
+	<bean class="training.book.sb.service.persistence.impl.TrainingPersistenceImpl" id="training.book.sb.service.persistence.TrainingPersistence" parent="basePersistence" />
+	<bean class="training.book.sb.service.impl.TutorLocalServiceImpl" id="training.book.sb.service.TutorLocalService" />
+	<bean class="training.book.sb.service.impl.TutorServiceImpl" id="training.book.sb.service.TutorService" />
+	<bean class="training.book.sb.service.persistence.impl.TutorPersistenceImpl" id="training.book.sb.service.persistence.TutorPersistence" parent="basePersistence" />
+</beans>

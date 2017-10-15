@@ -1,0 +1,16 @@
+Bundle-Name: training-book-sb-service
+Bundle-SymbolicName: training.book.sb.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+Import-Package: com.fasterxml.jackson.core,\
+com.fasterxml.jackson.core.async,\
+com.fasterxml.jackson.core.base,\
+com.fasterxml.jackson.core.filter,\
+com.fasterxml.jackson.core.format,
+com.fasterxml.jackson.core.io,\
+com.fasterxml.jackson.core.json,\
+com.fasterxml.jackson.core.json.async,\
+com.fasterxml.jackson.core.sym,\
+com.fasterxml.jackson.core.type,\
+com.fasterxml.jackson.core.util

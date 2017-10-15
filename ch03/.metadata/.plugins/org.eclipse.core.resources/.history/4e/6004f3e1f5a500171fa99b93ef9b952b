@@ -1,0 +1,143 @@
+package training.book.portlet.portlet;
+
+import java.io.IOException;
+
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
+
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.service.ServiceContextFactory;
+import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
+
+import training.book.portlet.constants.TrainingBookPortletKeys;
+import training.book.sb.model.Tutor;
+import training.book.sb.service.TrainingLocalService;
+import training.book.sb.service.TutorLocalService;
+
+/**
+ * @author vishalkumar.n
+ */
+@Component(immediate = true, property = {
+        "com.liferay.portlet.display-category=category.training",
+        "com.liferay.portlet.instanceable=false",
+        "com.liferay.portlet.scopeable=true",
+        "javax.portlet.display-name=training-book Portlet",
+        "javax.portlet.init-param.template-path=/",
+        "javax.portlet.init-param.view-template=/training-book/view.jsp",
+        "javax.portlet.name=" + TrainingBookPortletKeys.TrainingBook,
+        "javax.portlet.resource-bundle=content.Language",
+        "javax.portlet.security-role-ref=power-user,user",
+        "javax.portlet.supports.mime-type=text/html"
+}, service = Portlet.class)
+public class TrainingBookPortlet extends MVCPortlet {
+
+    @Override
+    public void render(RenderRequest renderRequest,
+            RenderResponse renderResponse)
+            throws IOException, PortletException {
+
+    }
+
+    public void addTutor(ActionRequest request, ActionResponse response)
+            throws PortalException {
+        ServiceContext serviceContext = ServiceContextFactory
+                .getInstance(Tutor.class.getName(), request);
+        String tutorName = ParamUtil.getString(request, "tutorName");
+        String tutorEmail = ParamUtil.getString(request, "tutorEmail");
+        long trainingId = ParamUtil.getLong(request, "trainingId");
+        long tutorId = ParamUtil.getLong(request, "tutorId");
+
+        if (tutorId > 0) {
+            try {
+
+                _tutorLocalService.updateTutor(serviceContext.getUserId(),
+                        trainingId, tutorId, tutorName, tutorEmail,
+                        serviceContext);
+
+                SessionMessages.add(request, "tutorAdded");
+
+                response.setRenderParameter("trainingId",
+                        Long.toString(trainingId));
+            } catch (Exception e) {
+                System.out.println(e);
+
+                SessionErrors.add(request, e.getClass().getName());
+
+                PortalUtil.copyRequestParameters(request, response);
+
+                response.setRenderParameter("mvcPath",
+                        "/training-book/edit_entry.jsp");
+            }
+        } else {
+            try {
+                _tutorLocalService.addTutor(
+                    serviceContext.getUserId(), tutorId, tutorName, tutorEmail,
+                    serviceContext);
+
+                SessionMessages.add(request, "tutorAdded");
+
+                response.setRenderParameter(
+                    "trainingId", Long.toString(trainingId));
+
+            }
+            catch (Exception e) {
+                SessionErrors.add(request, e.getClass().getName());
+
+                PortalUtil.copyRequestParameters(request, response);
+
+                response.setRenderParameter(
+                    "mvcPath", "/training-book/edit_training.jsp");
+            }
+        }
+
+    }
+    
+    public void deleteTutor(ActionRequest request, ActionResponse response) throws PortalException {
+        long tutorId = ParamUtil.getLong(request, "tutorId");
+        long trainingId = ParamUtil.getLong(request, "trainingId");
+
+        ServiceContext serviceContext = ServiceContextFactory.getInstance(
+            Tutor.class.getName(), request);
+
+        try {
+
+            response.setRenderParameter(
+                "trainingId", Long.toString(trainingId));
+
+            _tutorLocalService.deleteEntry(tutorId, serviceContext);
+        }
+
+        catch (Exception e) {
+            Logger.getLogger(TrainingBookPortlet.class.getName()).log(
+                Level.SEVERE, null, e);
+        }
+}    
+
+    @Reference(unbind = "-")
+    protected void setTutorService(TutorLocalService tutorLocalService) {
+        _tutorLocalService = tutorLocalService;
+    }
+
+    @Reference(unbind = "-")
+    protected void setTrainingService(
+            TrainingLocalService trainingLocalService) {
+        _trainingLocalService = trainingLocalService;
+    }
+
+    private TutorLocalService _tutorLocalService;
+
+    private TrainingLocalService _trainingLocalService;
+
+}

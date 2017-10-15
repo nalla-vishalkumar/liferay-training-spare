@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="training.book.sb">
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+    <author>Vishal Kumar Nalla</author>
+    <namespace>TB</namespace>
+    <entity name="Training" local-service="true" remote-service="true" uuid="true">
+
+    	<!-- PK fields -->
+
+    	<column name="trainingId" type="long" primary="true"></column>
+
+    	<!-- Group instance -->
+
+    	<column name="groupId" type="long"></column>
+
+    	<!-- Audit fields -->
+
+    	<column name="companyId" type="long"></column>
+    	<column name="userId" type="long"></column>
+    	<column name="userName" type="String"></column>
+    	<column name="createDate" type="Date"></column>
+    	<column name="modifiedDate" type="Date"></column>
+        <column name="trainingName" type="String"></column>
+        <column name="trainingDescription" type="String"></column>
+        <column name="tutorId" type="long"></column>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+    </entity>
+    <entity name="Tutor" local-service="true" remote-service="true" uuid="true">
+
+    	<!-- PK fields -->
+
+    	<column name="tutorId" type="long" primary="true"></column>
+
+    	<!-- Group instance -->
+
+    	<column name="groupId" type="long"></column>
+
+    	<!-- Audit fields -->
+
+    	<column name="companyId" type="long"></column>
+    	<column name="userId" type="long"></column>
+    	<column name="userName" type="String"></column>
+    	<column name="createDate" type="Date"></column>
+    	<column name="modifiedDate" type="Date"></column>
+    	<column name="tutorName" type="String"></column>
+    	<column name="tutorEmail" type="String"></column>
+
+
+    	<!-- PK fields -->
+
+    	<!-- Group instance -->
+
+    	<!-- Audit fields -->
+        <column name="trainingId" type="long"></column>
+        <finder name="G_G" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="trainingId"></finder-column>
+        </finder>
+    </entity>
+    <exceptions>
+        <exception>TrainingName</exception>
+        <exception>TutorName</exception>
+        <exception>TutorEmail</exception>
+    </exceptions>
+</service-builder>
